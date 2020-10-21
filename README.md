@@ -1,7 +1,7 @@
-# Unreal Engine Blueprints codestyle
-Unreal Engine Blueprints (visual programming tool) code style.
+# Unreal Engine Blueprints Style guide
+Unreal Engine Blueprints (visual programming tool) style guide.
 
-# Codestyle
+# Style guide
 
 ## Naming
 

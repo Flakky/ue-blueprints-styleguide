@@ -100,7 +100,7 @@ Use "L_" for a local variables, so you always know, if it is a function or a blu
 
 In blueprints, we have two kind of functions: Pure and Impure. By default, function is Impure, which means, that it has executable pins and should be inserted in your logic flow. Pure, on the other hand, does not have any executable pins and should be used to calculate Impure function parameters.
 
-![Blueprint Pure and Impure functions](Functions_PureImpure.png)
+![Blueprint Pure and Impure functions](/img/Functions_PureImpure.png)
 
 There is a simple rule, when you must use pure functions. If your function does not modify any state of any objects, and used to calculate or return some values, than it should be a Pure function.
 Very often you can determine a Pure function by it's name. If it starts from "Get", "Find", "Calculate", "Is" or something like this, than it must be a Pure function.
@@ -113,7 +113,7 @@ Note, that Pure functions get called every Impure function call. It means, that 
 
 You can use False only Branch, eventhough it is not a good practice in text-based code. In Blueprints, it is often more readable to use False exectution only, than placing "Not" node before a Branch condition. Using branch with "Not" is also a good option.
 
-![Blueprints Branch](Flow_Branch.png)
+![Blueprints Branch](/img/Flow_Branch.png)
 
 ## Flow Control nodes
 

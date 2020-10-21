@@ -7,10 +7,10 @@ Unreal Engine Blueprints (visual programming tool) code style.
 
 Use [PascalCase](https://techterms.com/definition/pascalcase) for naming anything inside blueprints, including variables, functions, delegates and such. 
 
-Namings shold ALWAYS be something meaningfull, even if you have to name it something long in order to understand. It's ok to name stuff like "AngleBetweenCameraAndChar".
-Do not use meaningless names of too short names, like "Temp" or "Var".
+Namings shold ALWAYS be something meaningfull, even if you have to name it something long in order to keep it understandable. It's ok to name stuff like "CurrentAngleBetweenCameraAndChar".
+Do not use meaningless names or too short names, like "Temp", "Var" or "X".
 
-Names should be in English.
+Namings should be in English.
 
 ### Variables
 
@@ -25,7 +25,7 @@ AbleToUseObject
 
 ### Function naming
 
-Function namings should describe an action, that function do.
+Function namings should describe an action, that a function do.
 
 Always start a function name with a verb.
 
@@ -50,12 +50,12 @@ OnGameEnded
 ```
 # Macros
 
-Do not use macros. Almost everything you can do by using functions. 
+Do not use macros. Almost everything you can do by using functions.
 The only reason you need a macro, is to use some kind of reusable and collapsed flow control nodes.
 
 # Functions and Events
 
-Almost everything should be under functions. This rule created just to orginize your code better. If you use functions for everything, you will have all of your code separated by meamingfull groups, you will be able to easily find a piece of logic inside "Blueprints" panel in a form of a convenient list. 
+Almost everything should be under functions. This rule created just to orginize your code better. If you use functions for everything, you will have all of your code separated by meamingfull actons and you will be able to easily find a piece of logic inside "Blueprints" panel in a form of a convenient list. 
 If you will make everything inside an EventGraph, than you get a huge chaos, where evything is hard to find..
 
 Functions are also have next benifits over Events:
@@ -73,17 +73,16 @@ You should also convert default events to functions, as well as overwritten func
 
 You can bind a function to a delegate as well, and it is prefered. Use CreateEvent node to bind a function.
 
-Некоторые эвенты, особенно те, что появляются по умолчанию, тоже лучше конвертировать в функции.
-
-Бинды на делегаты так же использовать не эвентами, а функциями. Биндить делегат на функцию можно через ноду CreateEvent (так же как для таймеров ниже).
+![Blueprints function dispatcher binding](/img/Functions_Binding.png)
 
 ## Return 
 
-Use return node to exit a function when it is needed. Do not create variables, that determine function exit later. It is more ofthen used with ForLoop, when you need to return a value when it is found, instead of using ForLoopWithBreak.
+Use return node to exit a function when it is needed. Do not create variables, that determine function exit later. It is more often used with ForLoop, when you need to return a value when it is found, instead of using ForLoopWithBreak.
 
+Wrong way:
 ![Blueprints function return Wrong](/img/Functions_LoopReturn_Wrong.png)
+Ok:
 ![Blueprints function return Ok](/img/Functions_LoopReturn_OK.png)
-
 This code is cleaner and you do not use extra variables.
 
 ## Parameters and variables
@@ -95,7 +94,7 @@ You can use wired connection though, when target is near a function start.
 ![Blueprints parameters Wrong](/img/Functions_Params_Wrong.png)
 ![Blueprints parameters Ok](/img/Functions_Params_OK.png)
 
-Use "L_" for a local variables, so you always know, if it is a function or blueprint variable.
+Use "L_" for a local variables, so you always know, if it is a function or a blueprint variable.
 
 ## Pure vs Impure
 
@@ -104,22 +103,21 @@ In blueprints, we have two kind of functions: Pure and Impure. By default, funct
 ![Blueprint Pure and Impure functions](Functions_PureImpure.png)
 
 There is a simple rule, when you must use pure functions. If your function does not modify any state of any objects, and used to calculate or return some values, than it should be a Pure function.
-
 Very often you can determine a Pure function by it's name. If it starts from "Get", "Find", "Calculate", "Is" or something like this, than it must be a Pure function.
 
-Note, that Pure functions get called every Ipmure function call. It means, that one Pure function note can be called as many times, as many Impure functions it is connected to. Be careful!
+Note, that Pure functions get called every Impure function call. It means, that one Pure function note can be called as many times, as many Impure functions it is connected to. Be careful!
 
 # Flow Control
 
 ## Branch
 
-You can use False only Branch, eventhough it is not a good practice in text-based code. In Blueprints, it is often more readable to use False exectution only, than placing "Not" node before a Branch condition.
+You can use False only Branch, eventhough it is not a good practice in text-based code. In Blueprints, it is often more readable to use False exectution only, than placing "Not" node before a Branch condition. Using branch with "Not" is also a good option.
 
 ![Blueprints Branch](Flow_Branch.png)
 
 ## Flow Control nodes
 
-As all of the code should be under functions, you are not able to use some Flow Control nodes, that remembers their state (FlipFlop, DoN, Gate e.t.c) or are asyncronius (Delay, RetDelay, e.t.c).
+As all of the code should be under functions, you are not able to use some Flow Control nodes, that remember their state (FlipFlop, DoN, Gate e.t.c) or are asynchronous (Delay, RetDelay, e.t.c).
 
 There is also no need to use Delay. Prefer Timers, that call other functions over time. This also has nest benefites:
 * You can stop Timer before it finished. Use TimerHandle -> ClearAndInvalidateTimer
@@ -134,8 +132,8 @@ You can also use Delay(0) to skip one frame, when it is needed. This is usefull,
 
 Validation is used to check, whenever variable points to an existing object. 
 
-You should use Validated Get node when you need to prevent flow execution, when pointer is not valid.
-You can turn a simple Get node into a Validated one by RMB on a Get node > Convert To Validated Get;
+You should use "Validated Get" node when you need to prevent flow execution when pointer is not valid.
+You can turn a simple "Get" node into a "Validated" one by RMB > Convert To Validated Get;
 
 When validating after Set or output node parameter, use IsValid node.
 

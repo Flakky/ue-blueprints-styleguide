@@ -60,10 +60,12 @@ The only reason you need a macro, is to use some kind of reusable and collapsed 
 Almost everything should be under functions. This rule created just to organize your code better. If you use functions for everything, you will have all of your code separated by meaningful actions and you will be able to easily find a piece of logic inside "Blueprints" panel in a form of a convenient list.
 If you will make everything inside an EventGraph, than you get a huge chaos, where everything is hard to find..
 
-Functions are also have next benefits over Events:
+Functions are also have next advantages over Events:
 
 - Local variables (Temporary variables, which are available only in a scope of a function)
+- Function parameters exposed as local variable nodes (Search for Get*ParamName* in context menu)
 - Functions can have return values
+- Function flow can be explicitly interrupted using Return Node
 - Function can be pure (allow to call without execute pins)
 - Functions can be private (you are not able to call this functions from other blueprints)
 - Functions can be const (prevent a developer from modifying the state of a Blueprint)
@@ -71,6 +73,8 @@ Functions are also have next benefits over Events:
 You should also convert default events to functions, as well as overwritten functions without return values. That way you see these events in function list and have access to local variables.
 
 ![Blueprints event convert to function](/img/Functions_EventToFunc.png)
+
+You still can use events when it is not possible to use functions (Exposed dispatcher events, RPC functions), or when you need to explicitly show the flow of logic with dispatchers.
 
 ## Delegate binding
 

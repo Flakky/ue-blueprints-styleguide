@@ -94,7 +94,7 @@ This code is cleaner and you do not use extra variables.
 
 When using functions with output parameters, always explicitly use return nodes where your function's flow breaks. This is important, because you can get undefined behaviour with parameter values when function returns without using "Return Node". 
 
-![Blueprints event convert to function](/img/Functions_Functions_Return.png)
+![Functions explicitly return](/img/Functions_Return.png)
 
 ### Parameters and variables
 

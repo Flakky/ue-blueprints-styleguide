@@ -76,13 +76,13 @@ You should also convert default events to functions, as well as overwritten func
 
 You still can use events when it is not possible to use functions (Exposed dispatcher events, RPC functions), or when you need to explicitly show the flow of logic with dispatchers.
 
-## Delegate binding
+### Delegate binding
 
 You can bind a function to a delegate as well, and it is preferred. Use CreateEvent node to bind a function.
 
 ![Blueprints function dispatcher binding](/img/Functions_Binding.png)
 
-## Return nodes
+### Return nodes
 
 Use return node to exit a function when it is needed. Do not create variables, that determine function exit later. It is more often used with ForLoop, when you need to return a value when it is found, instead of using ForLoopWithBreak.
 
@@ -92,7 +92,11 @@ Ok:
 ![Blueprints function return Ok](/img/Functions_LoopReturn_OK.png)
 This code is cleaner and you do not use extra variables.
 
-## Parameters and variables
+When using functions with output parameters, always explicitly use return nodes where your function's flow breaks. This is important, because you can get undefined behaviour with parameter values when function returns without using "Return Node". 
+
+![Blueprints event convert to function](/img/Functions_Functions_Return.png)
+
+### Parameters and variables
 
 Use function parameters as a Get node. Do not pull wires over a function graph.
 
@@ -103,7 +107,7 @@ You can use wired connection though, when target is near a function start.
 
 Use "L\_" for a local variables, so you always know, if it is a function or a blueprint variable.
 
-## Pure vs Impure
+### Pure vs Impure
 
 In blueprints, we have two kind of functions: Pure and Impure. By default, function is Impure, which means, that it has executable pins and should be inserted in your logic flow. Pure, on the other hand, does not have any executable pins and should be used to calculate Impure function parameters.
 

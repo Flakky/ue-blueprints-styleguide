@@ -2,6 +2,10 @@
 
 Unreal Engine Blueprints (visual programming tool) style guide.
 
+[![EN/US](/img/langflags/us.png)](https://github.com/Flakky/ue-blueprints-styleguide)  [![RU](/img/langflags/rus.png)](https://github.com/Flakky/ue-blueprints-styleguide/tree/russian)
+
+*Feel free to translate. Make sure you make a pull request with a translation, so we can add it here*
+
 ## Naming
 
 Use [PascalCase](https://techterms.com/definition/pascalcase) for naming anything inside blueprints, including variables, functions, delegates and such.
